@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://mandiriproject-94c0c-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+  <string name="gcm_defaultSenderId" translatable="false">346821469395</string>
+  <string name="google_storage_bucket" translatable="false">mandiriproject-94c0c.appspot.com</string>
+  <string name="project_id" translatable="false">mandiriproject-94c0c</string>
+  <string name="google_api_key" translatable="false">AIzaSyDtnLo--wtVNWGwS-BZCwvKhVDnBteSKfw</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDtnLo--wtVNWGwS-BZCwvKhVDnBteSKfw</string>
+  <string name="google_app_id" translatable="false">1:346821469395:android:26251763e9052120976026</string>
+  <string name="default_android_client_id" translatable="false">346821469395-ar79chpfmkso7rskg9lv2l04d7codu11.apps.googleusercontent.com</string>
+  <string name="default_web_client_id" translatable="false">346821469395-62m24oc2qa9nr20nqa77nlhtl86mlde2.apps.googleusercontent.com</string>
+</resources>

@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "346821469395",
+    "firebase_url": "https://mandiriproject-94c0c-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "mandiriproject-94c0c",
+    "storage_bucket": "mandiriproject-94c0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346821469395:android:26251763e9052120976026",
+        "android_client_info": {
+          "package_name": "com.projectMandiri.MandiriV2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346821469395-ar79chpfmkso7rskg9lv2l04d7codu11.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.projectMandiri.MandiriV2",
+            "certificate_hash": "6aaf1f322f7f97570f89382dc20789586d2424b9"
+          }
+        },
+        {
+          "client_id": "346821469395-em0hm395advn2kblmufqeftd94834flp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.projectMandiri.MandiriV2",
+            "certificate_hash": "9747e611a5e236234d9ef33b8cb1fe7a7b045780"
+          }
+        },
+        {
+          "client_id": "346821469395-62m24oc2qa9nr20nqa77nlhtl86mlde2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtnLo--wtVNWGwS-BZCwvKhVDnBteSKfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346821469395-62m24oc2qa9nr20nqa77nlhtl86mlde2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
