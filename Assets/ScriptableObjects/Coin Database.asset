@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc565a3a40e7721468d89056f1a714d1, type: 3}
+  m_Name: Coin Database
+  m_EditorClassIdentifier: 
+  coinList:
+  - markerNameID: marker1
+    isAvailable: 1
+    coinLocation:
+      Latitude: -7.24125439814746
+      Longitude: 112.772869074145
+      Altitude: 0.5
+      AltitudeMode: 0
+      Label: marker1
+    coinType: 0
+  - markerNameID: marker2
+    isAvailable: 1
+    coinLocation:
+      Latitude: -7.24169329685039
+      Longitude: 112.772761209542
+      Altitude: 0.5
+      AltitudeMode: 0
+      Label: marker2
+    coinType: 1
+  - markerNameID: marker7
+    isAvailable: 1
+    coinLocation:
+      Latitude: -7.241665490378935
+      Longitude: 112.77276353822805
+      Altitude: 0.5
+      AltitudeMode: 0
+      Label: marker7
+    coinType: 0
+  - markerNameID: marker3
+    isAvailable: 1
+    coinLocation:
+      Latitude: -6.22365796384073
+      Longitude: 106.8075224638555
+      Altitude: 0.5
+      AltitudeMode: 0
+      Label: marker3
+    coinType: 0
+  - markerNameID: marker4
+    isAvailable: 1
+    coinLocation:
+      Latitude: -6.22377795186249
+      Longitude: 106.80751709943756
+      Altitude: 0
+      AltitudeMode: 0
+      Label: marker4
+    coinType: 0
+  - markerNameID: marker5
+    isAvailable: 1
+    coinLocation:
+      Latitude: -6.2253075941958445
+      Longitude: 106.81394519648538
+      Altitude: 0.5
+      AltitudeMode: 0
+      Label: marker5
+    coinType: 1
+  - markerNameID: marker6
+    isAvailable: 1
+    coinLocation:
+      Latitude: -6.225490926307886
+      Longitude: 106.81380753112249
+      Altitude: 0.5
+      AltitudeMode: 0
+      Label: marker6
+    coinType: 0
+  prioritizeCloudDatabase: 1
