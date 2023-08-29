@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 396f1707c66b72e44a98ad251713483b
   - enabled: 1
     path: Assets/Scenes/Home 1.unity
-    guid: 53404f29330c1fb4fa90af947454bc75
+    guid: d76e717c07f0c3843a96f8a6edda28fe
   - enabled: 1
     path: Assets/Scenes/BargainHunt.unity
     guid: e966749ca27f54544a8a3b4eb29f18ae
