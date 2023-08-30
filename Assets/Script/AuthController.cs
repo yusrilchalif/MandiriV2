@@ -12,6 +12,9 @@ using UnityEngine.Events;
 using GoogleSignIn = Google.GoogleSignIn;
 using GoogleSignInConfiguration = Google.GoogleSignInConfiguration;
 using GoogleSignInUser = Google.GoogleSignInUser;
+using Facebook.Unity;
+using System;
+using Models;
 
 public class AuthController : MonoBehaviour
 {
@@ -60,6 +63,9 @@ public class AuthController : MonoBehaviour
             WebClientId = webClientId,
             RequestIdToken = true
         };
+
+        if(!FB.IsInitialized) FB.Init(FBInitCallback);
+        else FB.ActivateApp();
         
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
@@ -76,6 +82,12 @@ public class AuthController : MonoBehaviour
         });
 
         GetGlobalSettings();
+    }
+
+    private void FBInitCallback()
+    {
+        if(FB.IsInitialized) FB.ActivateApp();
+        else Debug.LogWarning("Facebook sdk failed to initialize!");
     }
 
     public void Login(string email, string password, UnityAction<string> onfailed) {
@@ -247,6 +259,53 @@ public class AuthController : MonoBehaviour
         AddStatusText("Calling Games SignIn");
 
         GoogleSignIn.DefaultInstance.SignIn().ContinueWith(OnAuthenticationFinished);
+    }
+
+    public void FBLogin() {
+        var perms = new List<string>() {"public_profile", "email"};
+        FB.LogInWithReadPermissions(perms, FBLoginCallback);
+    }
+
+    private void FBLoginCallback(ILoginResult result)
+    {
+        if(FB.IsLoggedIn) {
+            var fbToken = AccessToken.CurrentAccessToken;
+            
+            Credential credential = FacebookAuthProvider.GetCredential(fbToken.ToString());
+            auth.SignInAndRetrieveDataWithCredentialAsync(credential).ContinueWith( task => {
+                if(task.IsCanceled) {
+                    Debug.Log("FB login cancelled");
+                    return;
+                }
+                if(task.IsFaulted) {
+                    Debug.LogError("Getting fb cred error!" + task.Exception);
+                    return;
+                }
+
+                var result = task.Result;
+                Debug.Log("sign in with user data : " + result.User.Email + " " + result.User.DisplayName);
+
+                string cleanedEmail = RemoveSpecialChar(result.User.Email);
+                UserData newUser = new UserData(cleanedEmail, cleanedEmail, result.User.DisplayName, result.User.DisplayName, 0, 0, globalUserSettings.limit);
+
+                GetCoinListFromDB( response => { coinAuth.SetCoinDB(response); }); 
+                GetUser(cleanedEmail, newUser,
+                    (userget) => {
+                        Debug.Log("Found user with the fb data!");
+                        userAuth.SetCurrentUser(userget);
+                        GlobalSceneController.Instance.ChangeScene("Home 1");
+                    },
+                    (message) => {
+                        Debug.Log("Created new user from fb data!");
+                        userAuth.SetCurrentUser(newUser);
+                        GlobalSceneController.Instance.ChangeScene("Home 1");
+
+                });
+            });
+        }
+        else {
+            Debug.Log("User login fb cancelled.");
+        }
     }
 
     private List<string> messages = new List<string>();

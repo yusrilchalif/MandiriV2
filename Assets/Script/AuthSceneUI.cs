@@ -51,6 +51,10 @@ public class AuthSceneUI : MonoBehaviour
        AuthController.Instance.OnSignIn();
     }
 
+    public void LoginFB() {
+        AuthController.Instance.FBLogin();
+    }
+
     public void Login() {
 
         if (emailInput.text is null || passwordInput.text is null) {
