@@ -5,6 +5,7 @@ using ARLocation;
 using UnityEngine.Events;
 using System;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.EventSystems;
 
 [Serializable]
 public class Loc {
@@ -35,7 +36,7 @@ public class NewCoin {
 }
 
 
-public class Coins : MonoBehaviour
+public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
 {
     [Header("Coin settings")]
     public NewCoin coin;
@@ -55,7 +56,7 @@ public class Coins : MonoBehaviour
     private void OnMouseDown() {
         Debug.Log("On mouse down detected!");
         //Coin Function
-        InteractCoin();
+        // InteractCoin();
     }
 
 
@@ -154,5 +155,16 @@ public class Coins : MonoBehaviour
             }
         );
 
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("On pointer click.");
+        InteractCoin();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("On pointer down.");
     }
 }
