@@ -76,6 +76,7 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         OnInteract = onInteract;
         OnFailedInteract = onFailed;
         Debug.Log("On interact assigned!");
+        Debug.Log("Distance from user is around : " + placeAt.RawGpsDistance);
 
 
         if(ColorUtility.TryParseHtmlString(coin.type, out Color newcolor)) {
