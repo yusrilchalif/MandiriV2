@@ -49,19 +49,19 @@ public class TreasureHuntSceneManager : MonoBehaviour
     }
 
     void Update() {
-        if(Input.touchCount > 0) {
-            Touch touch = Input.GetTouch(0);
+        //if(Input.touchCount > 0) {
+        //    Touch touch = Input.GetTouch(0);
 
-            if(touch.phase == TouchPhase.Began) {
-                if(raycastManager.Raycast(touch.position, hitResult, UnityEngine.XR.ARSubsystems.TrackableType.AllTypes)) {
-                    foreach (var hit in hitResult)
-                    {
-                        Debug.Log("Touch detected!");
-                        hit.trackable.GetComponent<Coins>().InteractCoin();
-                    }
-                }
-            }
-        }
+        //    if(touch.phase == TouchPhase.Began) {
+        //        if(raycastManager.Raycast(touch.position, hitResult, UnityEngine.XR.ARSubsystems.TrackableType.AllTypes)) {
+        //            foreach (var hit in hitResult)
+        //            {
+        //                Debug.Log("Touch detected!");
+        //                hit.trackable.GetComponent<Coins>().InteractCoin();
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     private void OnDestroy()
