@@ -18,10 +18,9 @@ public class TreasureHuntSceneManager : MonoBehaviour
     [SerializeField] private GameObject panelErrorBottom;
     [SerializeField] private GameObject panelError;
     [SerializeField] private List<GameObject> allCoins = new List<GameObject>();
-    [SerializeField] private ARRaycastManager raycastManager;
+    private List<Coins> allCoinsComponent = new List<Coins>();
 
     private UserData localUserData;
-    private List<ARRaycastHit> hitResult = new List<ARRaycastHit>();
 
     private void Awake()
     {
@@ -44,24 +43,9 @@ public class TreasureHuntSceneManager : MonoBehaviour
             ARLocationManager.Instance.Restart();
         });
         StartSpawningCoin();
+        ARLocationProvider.Instance.OnLocationUpdatedDelegate += OnLocationUpdate;
 
         panelErrorBottom.SetActive(false);
-    }
-
-    void Update() {
-        //if(Input.touchCount > 0) {
-        //    Touch touch = Input.GetTouch(0);
-
-        //    if(touch.phase == TouchPhase.Began) {
-        //        if(raycastManager.Raycast(touch.position, hitResult, UnityEngine.XR.ARSubsystems.TrackableType.AllTypes)) {
-        //            foreach (var hit in hitResult)
-        //            {
-        //                Debug.Log("Touch detected!");
-        //                hit.trackable.GetComponent<Coins>().InteractCoin();
-        //            }
-        //        }
-        //    }
-        //}
     }
 
     private void OnDestroy()
@@ -124,10 +108,28 @@ public class TreasureHuntSceneManager : MonoBehaviour
     public void StartSpawningCoin() {
         print("Spawning coins....");
         allCoins = CoinAuth.Instance.SpawnCoin( (coin) => { UpdateCoinText(coin.coin.value);}, (msg) => { ShowError(msg); });
+
+        foreach (var item in allCoins)
+        {
+            allCoinsComponent.Add(item.GetComponent<Coins>());
+        }
         
         // Tambah baris ini untuk memperbarui coinResultText
         var totalCoins = UserAuth.Instance.CurrentUser.coinAmount;
         coinTextScreenshot.text = totalCoins.ToString();
+    }
+    
+    private void OnLocationUpdate(LocationReading currentLocation, LocationReading lastLocation)
+    {
+        foreach (var coin in allCoinsComponent)
+        {
+            if(coin.CoinDistance() > AuthController.Instance.globalUserSettings.coinDistance) {
+                coin.ShowCoins(false);
+            }
+            else {
+                coin.ShowCoins(true);
+            }
+        }
     }
 
     public void ResetARSession(object sender, ValueChangedEventArgs args) {

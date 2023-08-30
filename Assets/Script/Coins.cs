@@ -65,6 +65,11 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
     }
 
     public void InitCoin(NewCoin newCoin, string id, UnityAction<Coins> onInteract, UnityAction<string> onFailed) {
+        StartCoroutine(DelayInitCoin(newCoin, id, onInteract, onFailed));
+    }
+
+    IEnumerator DelayInitCoin(NewCoin newCoin, string id, UnityAction<Coins> onInteract, UnityAction<string> onFailed) {
+        yield return new WaitForEndOfFrame();
         
         placeAt = GetComponent<PlaceAtLocation>();
         Location coinLoc = new Location((double)newCoin.location.latitude, (double)newCoin.location.longitude);
@@ -77,6 +82,11 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         OnFailedInteract = onFailed;
         Debug.Log("On interact assigned!");
         Debug.Log("Distance from user is around : " + placeAt.RawGpsDistance);
+
+        if(placeAt.RawGpsDistance > AuthController.Instance.globalUserSettings.coinDistance) {
+            ShowCoins(false);
+        }
+        else ShowCoins(true);
 
 
         if(ColorUtility.TryParseHtmlString(coin.type, out Color newcolor)) {
@@ -102,6 +112,10 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
 
     public void ShowCoins(bool isShowing) {
         gameObject.SetActive(isShowing);
+    }
+
+    public double CoinDistance() {
+        return placeAt.RawGpsDistance;
     }
 
     [ContextMenu("Interact")]
