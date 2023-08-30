@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44407395, g: 0.49333173, b: 0.57240045, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -747,7 +747,8 @@ MonoBehaviour:
     di Mandiri Multiverse?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3b015fc1d10d1545bd15c0faf843bde, type: 2}
-  m_sharedMaterial: {fileID: -6065121996368965934, guid: c3b015fc1d10d1545bd15c0faf843bde, type: 2}
+  m_sharedMaterial: {fileID: -6065121996368965934, guid: c3b015fc1d10d1545bd15c0faf843bde,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -771,7 +772,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 40.05
   m_fontSizeBase: 51.13
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1672,7 +1673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -29.999992}
+  m_AnchoredPosition: {x: 0, y: -29.999994}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377291967
@@ -2238,17 +2239,28 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
@@ -2317,7 +2329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -29.999992}
+  m_AnchoredPosition: {x: 0, y: -29.999994}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &512807988
@@ -3826,7 +3838,8 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7e559e53d92c1ff4698acc36208bf8ad, type: 2}
-  m_sharedMaterial: {fileID: 834659412432107824, guid: 7e559e53d92c1ff4698acc36208bf8ad, type: 2}
+  m_sharedMaterial: {fileID: 834659412432107824, guid: 7e559e53d92c1ff4698acc36208bf8ad,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4182,7 +4195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -29.999992}
+  m_AnchoredPosition: {x: 0, y: -29.999994}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1003317506
@@ -5015,7 +5028,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1523451825}
         m_TargetAssemblyTypeName: HomeSceneManager, Assembly-CSharp
-        m_MethodName: LogOut
+        m_MethodName: Logout
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6276,7 +6289,8 @@ MonoBehaviour:
   m_text: XXX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7e559e53d92c1ff4698acc36208bf8ad, type: 2}
-  m_sharedMaterial: {fileID: 834659412432107824, guid: 7e559e53d92c1ff4698acc36208bf8ad, type: 2}
+  m_sharedMaterial: {fileID: 834659412432107824, guid: 7e559e53d92c1ff4698acc36208bf8ad,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6681,7 +6695,8 @@ MonoBehaviour:
   m_text: Koin Kamu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7e559e53d92c1ff4698acc36208bf8ad, type: 2}
-  m_sharedMaterial: {fileID: 834659412432107824, guid: 7e559e53d92c1ff4698acc36208bf8ad, type: 2}
+  m_sharedMaterial: {fileID: 834659412432107824, guid: 7e559e53d92c1ff4698acc36208bf8ad,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7693,7 +7708,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1684318719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b22664f68c204842a1ff4a711d07355, type: 3}
+  m_Script: {fileID: 11500000, guid: 902b7a5e9a18b48ea99b32e4a9dab3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   profileMenu: {fileID: 1444014734}
@@ -8726,7 +8741,8 @@ MonoBehaviour:
   m_text: "Halo, Kamu si Penjelajah!\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3b015fc1d10d1545bd15c0faf843bde, type: 2}
-  m_sharedMaterial: {fileID: -6065121996368965934, guid: c3b015fc1d10d1545bd15c0faf843bde, type: 2}
+  m_sharedMaterial: {fileID: -6065121996368965934, guid: c3b015fc1d10d1545bd15c0faf843bde,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9924,7 +9940,8 @@ MonoBehaviour:
   m_text: Exchange your scores for prizes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc66a969a5c1b9145a34c53507521b3f, type: 2}
-  m_sharedMaterial: {fileID: 6090482207742616295, guid: cc66a969a5c1b9145a34c53507521b3f, type: 2}
+  m_sharedMaterial: {fileID: 6090482207742616295, guid: cc66a969a5c1b9145a34c53507521b3f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
