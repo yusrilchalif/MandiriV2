@@ -1996,7 +1996,6 @@ MonoBehaviour:
   panelErrorBottom: {fileID: 986299322}
   panelError: {fileID: 448541646}
   allCoins: []
-  raycastManager: {fileID: 1235847898}
 --- !u!1 &1154364281
 GameObject:
   m_ObjectHideFlags: 0
