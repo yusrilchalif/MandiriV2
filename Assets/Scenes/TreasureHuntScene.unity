@@ -1993,6 +1993,7 @@ MonoBehaviour:
   coinText: {fileID: 1043416682}
   coinTextScreenshot: {fileID: 1022997321}
   errorText: {fileID: 839657994}
+  errorTextBottom: {fileID: 1864165928}
   panelErrorBottom: {fileID: 986299322}
   panelError: {fileID: 448541646}
   allCoins: []

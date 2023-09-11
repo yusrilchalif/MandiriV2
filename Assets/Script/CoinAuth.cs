@@ -5,6 +5,7 @@ using UnityEngine;
 using Proyecto26;
 using System;
 using UnityEngine.Events;
+using Newtonsoft.Json;
 
 
 public enum PostalLocation{
@@ -104,6 +105,22 @@ public class CoinAuth : MonoBehaviour
         
         Debug.Log("Posting coin" + coinKey + " to : " + databaseURL);
         RestClient.Put<NewCoin>($"{databaseURL}coin_tests/{coinKey}.json", coin.coin).Catch( onRejected => { onFailed?.Invoke(onRejected); }).Then( () => { onDone?.Invoke(); });
+    }
+
+    public NewCoin GetCurrentCoin(string coinID) {
+        NewCoin newCoin = null;
+        var databaseURL = AuthController.Instance.GetDBURL();
+
+        RestClient.Get($"{databaseURL}configs/coin_test/{coinID}.json").Then( response => {
+            Debug.Log("Trying to parse json to global settings...");
+            var responsejson = response.Text;
+            Debug.Log($"Parsing {responsejson}");
+            newCoin = JsonConvert.DeserializeObject<NewCoin>(responsejson);
+            Debug.Log($"Get coin! {newCoin.created_at}");  
+            return newCoin;
+        });
+
+        return newCoin;
     }
 
 }
