@@ -10,6 +10,7 @@ public class UserData
     public int coinAmount;
     public int currentLimit;
     public int maxLimit;
+    public int redeemHistory;
 
     public UserData(string userID, string username, int coinAmt) {
         this.ID = userID;
@@ -17,7 +18,7 @@ public class UserData
         this.coinAmount = coinAmt;
     }
 
-    public UserData(string userID, string email, string name, string username, int coinAmt, int currentLimit, int maxLimit) {
+    public UserData(string userID, string email, string name, string username, int coinAmt, int currentLimit, int maxLimit, int redeemHistory) {
         this.ID = userID;
         this.name = name;
         this.userName = username;
@@ -25,5 +26,6 @@ public class UserData
         this.coinAmount = coinAmt;
         this.currentLimit = currentLimit;
         this.maxLimit = maxLimit;
+        this.redeemHistory = redeemHistory;
     }
 }

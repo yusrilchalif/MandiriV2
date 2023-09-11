@@ -198,7 +198,7 @@ public class AuthController : MonoBehaviour
                 tempUsername = splitUsername[0];
 
                 // Buat objek UserData berdasarkan data yang telah dikumpulkan
-                UserData userData = new UserData(user.UserId, cleanedEmail, user.GivenName, user.DisplayName, 0, 0, globalUserSettings.limit);
+                UserData userData = new UserData(user.UserId, cleanedEmail, user.GivenName, user.DisplayName, 0, 0, globalUserSettings.limit, 0);
                 Debug.Log("User name is : " + user.DisplayName + " user given name is : " + user.GivenName + " user family name is " + user.FamilyName);
                 Debug.Log("User email is : " + user.Email + "user cleaned email is " + cleanedEmail);
 
@@ -338,7 +338,7 @@ public class AuthController : MonoBehaviour
                 string[] username = tempUsername.Split(splittedWords);
                 tempUsername = username[0];
                 string cleanedEmail = RemoveSpecialChar(firebaseID);
-                UserData newUser = new UserData(cleanedEmail, cleanedEmail, tempUsername, tempUsername, 0, 0, globalUserSettings.limit);
+                UserData newUser = new UserData(cleanedEmail, cleanedEmail, tempUsername, tempUsername, 0, 0, globalUserSettings.limit, 0);
                 currentUser = newUser;
                 PostUser(newUser, newUser.email, () => failed?.Invoke(currentUser));
             });
@@ -395,7 +395,7 @@ public class AuthController : MonoBehaviour
         else {
             string firebaseID = email;
             firebaseID = RemoveSpecialChar(firebaseID);
-            UserData newUser = new UserData(firebaseID, firebaseID, name, username, 0, 0, globalUserSettings.limit);
+            UserData newUser = new UserData(firebaseID, firebaseID, name, username, 0, 0, globalUserSettings.limit, 0);
             PostUser(newUser, firebaseID, () => onSuccess?.Invoke());
         }
     }

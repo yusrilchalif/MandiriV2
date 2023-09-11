@@ -15,6 +15,7 @@ public class TreasureHuntSceneManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinText;
     [SerializeField] private TextMeshProUGUI coinTextScreenshot;
     [SerializeField] private TextMeshProUGUI errorText;
+    [SerializeField] private TextMeshProUGUI errorTextBottom;
     [SerializeField] private GameObject panelErrorBottom;
     [SerializeField] private GameObject panelError;
     [SerializeField] private List<GameObject> allCoins = new List<GameObject>();
@@ -83,13 +84,14 @@ public class TreasureHuntSceneManager : MonoBehaviour
         errorText.text = msg;
         yield return new WaitForSeconds(2f);
         errorText.gameObject.SetActive(false);
-        ClosePanel();
+        ClosePanel(msg);
     }
 
-    public void ClosePanel()
+    public void ClosePanel(string msg)
     {
         panelError.SetActive(false);
         panelErrorBottom.SetActive(true);
+        errorTextBottom.text = msg;
     }
 
     public void OnDatabaseValueChanged(object sender, ValueChangedEventArgs args) {

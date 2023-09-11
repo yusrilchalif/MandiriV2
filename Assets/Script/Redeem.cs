@@ -26,9 +26,12 @@ public class Redeem : MonoBehaviour
         currentButton.interactable = false;
         */
         coinAmount -= cost;
+        int redeemHistory = UserAuth.Instance.CurrentUser.redeemHistory;
+        redeemHistory++;
         
         var currentUser = UserAuth.Instance.CurrentUser;
         currentUser.coinAmount = coinAmount;
+        currentUser.redeemHistory = redeemHistory;
 
         UserAuth.Instance.SetCurrentUser(currentUser);
         UserAuth.Instance.PostUser(currentUser, () => {}, (failed) => { Debug.Log(failed.Message); });
