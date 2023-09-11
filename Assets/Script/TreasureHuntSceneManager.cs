@@ -79,9 +79,11 @@ public class TreasureHuntSceneManager : MonoBehaviour
 
     IEnumerator ShowErrorTimed(string msg) {
         errorText.gameObject.SetActive(true);
+        panelError.gameObject.SetActive(true);
         errorText.text = msg;
         yield return new WaitForSeconds(2f);
         errorText.gameObject.SetActive(false);
+        ClosePanel();
     }
 
     public void ClosePanel()
