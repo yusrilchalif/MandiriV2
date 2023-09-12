@@ -286,7 +286,7 @@ public class AuthController : MonoBehaviour
                 Debug.Log("sign in with user data : " + result.User.Email + " " + result.User.DisplayName);
 
                 string cleanedEmail = RemoveSpecialChar(result.User.Email);
-                UserData newUser = new UserData(cleanedEmail, cleanedEmail, result.User.DisplayName, result.User.DisplayName, 0, 0, globalUserSettings.limit);
+                UserData newUser = new UserData(cleanedEmail, cleanedEmail, result.User.DisplayName, result.User.DisplayName, 0, 0, globalUserSettings.limit, 0);
 
                 GetCoinListFromDB( response => { coinAuth.SetCoinDB(response); }); 
                 GetUser(cleanedEmail, newUser,

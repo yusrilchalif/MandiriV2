@@ -4888,6 +4888,7 @@ MonoBehaviour:
     coinAmount: 0
     currentLimit: 0
     maxLimit: 0
+    redeemHistory: 0
 --- !u!114 &868041041
 MonoBehaviour:
   m_ObjectHideFlags: 0
