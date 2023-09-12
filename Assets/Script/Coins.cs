@@ -134,11 +134,11 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         }
 
         //Check if coins is already claimed on cloud
-        var currentCoin = CoinAuth.Instance.GetCurrentCoin(ID);
-        if(!currentCoin.is_available) {
-            OnFailedInteract?.Invoke("Koin telah diklaim oleh pengguna lain!");
-            return;
-        }
+        //var currentCoin = CoinAuth.Instance.GetCurrentCoin(ID);
+        //if(!currentCoin.is_available) {
+        //    OnFailedInteract?.Invoke("Koin telah diklaim oleh pengguna lain!");
+        //    return;
+        //}
 
         //User Function
         currentUser.coinAmount += coin.value;
