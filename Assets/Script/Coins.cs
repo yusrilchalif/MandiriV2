@@ -158,7 +158,7 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
             () => {
                 PostCoinDB(currentUser);
             },
-            (error) => {
+            () => {
                 Debug.Log("Coin is not available");
                 OnFailedInteract?.Invoke("Koin telah diklaim oleh pengguna lain!");
                 DestroyCoin();
