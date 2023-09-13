@@ -111,6 +111,7 @@ public class CoinAuth : MonoBehaviour
         NewCoin newCoin = null;
         var databaseURL = AuthController.Instance.GetDBURL();
 
+        Debug.Log("Trying to parse json " + coinID);
         RestClient.Get($"{databaseURL}configs/coin_test/{coinID}.json").Then(
             (response) => {
             Debug.Log("Trying to parse json to global settings...");
