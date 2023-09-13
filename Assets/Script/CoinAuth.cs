@@ -107,23 +107,25 @@ public class CoinAuth : MonoBehaviour
         RestClient.Put<NewCoin>($"{databaseURL}coin_tests/{coinKey}.json", coin.coin).Catch( onRejected => { onFailed?.Invoke(onRejected); }).Then( () => { onDone?.Invoke(); });
     }
 
-    public bool GetCoinStatus(string coinID) {
+    public void GetCoinStatus(string coinID, OnDonePostCoinCallback onSuccess, OnFailedPostCoinCallback onFailed) {
         NewCoin newCoin = null;
         var databaseURL = AuthController.Instance.GetDBURL();
 
-        RestClient.Get($"{databaseURL}configs/coin_test/{coinID}.json").Then( response => {
+        RestClient.Get($"{databaseURL}configs/coin_test/{coinID}.json").Then(
+            (response) => {
             Debug.Log("Trying to parse json to global settings...");
             var responsejson = response.Text;
             Debug.Log($"Parsing {responsejson}");
             newCoin = JsonConvert.DeserializeObject<NewCoin>(responsejson);
             Debug.Log($"Get coin updated! {newCoin.value}");
-            if(newCoin.is_available)
-                return true;
-            else
-                return false;
-        });
-
-        return false;
+            if(newCoin.is_available) {
+                onSuccess?.Invoke();
+            }
+            else {
+                Exception e = new Exception();
+                onFailed?.Invoke(e);
+            }
+        }).Catch(failed => { onFailed?.Invoke(failed); });
     }
 
 }
