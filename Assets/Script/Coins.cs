@@ -134,49 +134,50 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         }
 
         //Check if coins is already claimed on cloud
-        //var currentCoin = CoinAuth.Instance.GetCurrentCoin(ID);
-        //if(!currentCoin.is_available) {
-        //    OnFailedInteract?.Invoke("Koin telah diklaim oleh pengguna lain!");
-        //    return;
-        //}
+        if(CoinAuth.Instance.GetCoinStatus(ID)) {
+           Debug.Log("Coin is available");
+            //User Function
+            currentUser.coinAmount += coin.value;
+            currentUser.currentLimit += coin.value;
 
-        //User Function
-        currentUser.coinAmount += coin.value;
-        currentUser.currentLimit += coin.value;
+            Debug.Log("Posting coin to db...");
+            CoinAuth.Instance.PostCoin(this, () => {
+                //Succes
+                Debug.Log("Posting coin success!");
 
-        Debug.Log("Posting coin to db...");
-        CoinAuth.Instance.PostCoin(this, () => {
-            //Succes
-            Debug.Log("Posting coin success!");
-
-            //Post function
-            UserAuth.Instance.PostUser(currentUser, () => {
-                    //Post Succes
-                    Debug.Log("Updating current user...");
-                    UserAuth.Instance.SetCurrentUser(currentUser);
-                    
-                    Debug.Log("Invoking on interact...");
-                    //Coin Function
-                    OnInteract?.Invoke(this);
-                    
-                    Debug.Log("Destroying coin and instantiate vfx");
-                    //VFX & Destroy
-                    Instantiate(coinVFX, transform.position, Quaternion.identity);
-                    Destroy(this.gameObject);
-                }, (reason) => {
-                    //Failed
-                    Debug.Log("Failed because of : " + reason);
-                    OnFailedInteract?.Invoke($"Gagal mengambil koin. Error Code : {reason}");
-                    return;
-                });
-            },
-            (rejected) => {
-            //Failed
-            print("Failed to post coin : " + rejected);
-            OnFailedInteract?.Invoke($"Gagal mengambil koin. Error Code : {rejected}");
-            }
-        );
-
+                //Post function
+                UserAuth.Instance.PostUser(currentUser, () => {
+                        //Post Succes
+                        Debug.Log("Updating current user...");
+                        UserAuth.Instance.SetCurrentUser(currentUser);
+                        
+                        Debug.Log("Invoking on interact...");
+                        //Coin Function
+                        OnInteract?.Invoke(this);
+                        
+                        Debug.Log("Destroying coin and instantiate vfx");
+                        //VFX & Destroy
+                        Instantiate(coinVFX, transform.position, Quaternion.identity);
+                        Destroy(this.gameObject);
+                    }, (reason) => {
+                        //Failed
+                        Debug.Log("Failed because of : " + reason);
+                        OnFailedInteract?.Invoke($"Gagal mengambil koin. Error Code : {reason}");
+                        return;
+                    });
+                },
+                (rejected) => {
+                //Failed
+                print("Failed to post coin : " + rejected);
+                OnFailedInteract?.Invoke($"Gagal mengambil koin. Error Code : {rejected}");
+                }
+            );
+        }
+        else {
+            Debug.Log("Coin is not available");
+            OnFailedInteract?.Invoke("Koin telah diklaim oleh pengguna lain!");
+            return;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)

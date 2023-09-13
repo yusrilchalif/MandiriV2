@@ -107,7 +107,7 @@ public class CoinAuth : MonoBehaviour
         RestClient.Put<NewCoin>($"{databaseURL}coin_tests/{coinKey}.json", coin.coin).Catch( onRejected => { onFailed?.Invoke(onRejected); }).Then( () => { onDone?.Invoke(); });
     }
 
-    public NewCoin GetCurrentCoin(string coinID) {
+    public bool GetCoinStatus(string coinID) {
         NewCoin newCoin = null;
         var databaseURL = AuthController.Instance.GetDBURL();
 
@@ -116,11 +116,14 @@ public class CoinAuth : MonoBehaviour
             var responsejson = response.Text;
             Debug.Log($"Parsing {responsejson}");
             newCoin = JsonConvert.DeserializeObject<NewCoin>(responsejson);
-            Debug.Log($"Get coin! {newCoin.created_at}");  
-            return newCoin;
+            Debug.Log($"Get coin updated! {newCoin.value}");
+            if(newCoin.is_available)
+                return true;
+            else
+                return false;
         });
 
-        return newCoin;
+        return false;
     }
 
 }
