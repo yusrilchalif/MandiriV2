@@ -64,12 +64,36 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
     }
 
+    void OnEnable() {
+        StartCoroutine(DelayInitCoin(coin, ID, OnInteract, OnFailedInteract));
+    }
+
     public void InitCoin(NewCoin newCoin, string id, UnityAction<Coins> onInteract, UnityAction<string> onFailed) {
+        StoreValue(newCoin, id, onInteract, onFailed);
+        if(!gameObject.activeSelf) return;
+        
         StartCoroutine(DelayInitCoin(newCoin, id, onInteract, onFailed));
     }
 
     IEnumerator DelayInitCoin(NewCoin newCoin, string id, UnityAction<Coins> onInteract, UnityAction<string> onFailed) {
         yield return new WaitForEndOfFrame();
+        
+        RestoreValue(newCoin, id, onInteract, onFailed);
+
+        Debug.Log("On interact assigned!");
+        Debug.Log("Distance from user is around : " + placeAt.RawGpsDistance);
+
+        if(ColorUtility.TryParseHtmlString(coin.type, out Color newcolor)) {
+            mesh.material.color = newcolor;
+        }
+
+        if(placeAt.RawGpsDistance > AuthController.Instance.globalUserSettings.coinDistance) {
+            ShowCoins(false);
+        }
+        else ShowCoins(true);
+
+    }
+    void RestoreValue(NewCoin newCoin, string id, UnityAction<Coins> onInteract, UnityAction<string> onFailed) {
         
         placeAt = GetComponent<PlaceAtLocation>();
         Location coinLoc = new Location((double)newCoin.location.latitude, (double)newCoin.location.longitude);
@@ -80,19 +104,15 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         ID = id;
         OnInteract = onInteract;
         OnFailedInteract = onFailed;
-        Debug.Log("On interact assigned!");
-        Debug.Log("Distance from user is around : " + placeAt.RawGpsDistance);
-
-        if(placeAt.RawGpsDistance > AuthController.Instance.globalUserSettings.coinDistance) {
-            ShowCoins(false);
-        }
-        else ShowCoins(true);
-
-
-        if(ColorUtility.TryParseHtmlString(coin.type, out Color newcolor)) {
-            mesh.material.color = newcolor;
-        }
     }
+    
+    void StoreValue(NewCoin newCoin, string id, UnityAction<Coins> onInteract, UnityAction<string> onFailed) {
+        coin = newCoin;
+        ID = id;
+        OnInteract = onInteract;
+        OnFailedInteract = onFailed;
+    }
+
 
     public void InitCoin(NewCoin newCoin, string id, UnityAction<Coins> onInteract) {
         placeAt = gameObject.GetComponent<PlaceAtLocation>();

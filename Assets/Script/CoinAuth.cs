@@ -89,7 +89,6 @@ public class CoinAuth : MonoBehaviour
             var newCoin = Instantiate(coinPrefab, Vector3.zero, Quaternion.identity);
             
             Coins coinItem = newCoin.GetComponent<Coins>();
-            if(!coinItem.coin.is_available) coinItem.ShowCoins(false);
             coinItem.InitCoin(item.Value, item.Key, (on) => onInteract?.Invoke(coinItem), (msg) => onFailed?.Invoke(msg));
             
             spawnedCoin.Add(newCoin);
