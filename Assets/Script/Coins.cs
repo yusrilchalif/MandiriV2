@@ -141,6 +141,7 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
             (error) => {
                 Debug.Log("Coin is not available");
                 OnFailedInteract?.Invoke("Koin telah diklaim oleh pengguna lain!");
+                DestroyCoin();
             }
         );
     }
@@ -165,11 +166,7 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
                     Debug.Log("Invoking on interact...");
                     //Coin Function
                     OnInteract?.Invoke(this);
-                    
-                    Debug.Log("Destroying coin and instantiate vfx");
-                    //VFX & Destroy
-                    Instantiate(coinVFX, transform.position, Quaternion.identity);
-                    Destroy(this.gameObject);
+                    DestroyCoin();
                 }, (reason) => {
                     //Failed
                     Debug.Log("Failed because of : " + reason);
@@ -183,6 +180,13 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
             OnFailedInteract?.Invoke($"Gagal mengambil koin. Error Code : {rejected}");
             }
         );
+    }
+
+    void DestroyCoin() {
+        Debug.Log("Destroying coin and instantiate vfx");
+        //VFX & Destroy
+        Instantiate(coinVFX, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 
     public void OnPointerClick(PointerEventData eventData)
