@@ -6,6 +6,8 @@ using UnityEngine.Events;
 using System;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.EventSystems;
+using Proyecto26;
+using Newtonsoft.Json;
 
 [Serializable]
 public class Loc {
