@@ -98,12 +98,15 @@ public class CoinAuth : MonoBehaviour
     }
 
     public void PostCoin(Coins coin, OnDonePostCoinCallback onDone, OnFailedPostCoinCallback onFailed) {
-        var databaseURL = AuthController.Instance.GetDBURL();
-        var coinKey = coinDictionary.FirstOrDefault(x => x.Value == coin.coin).Key;
-        coin.coin.is_available = false;
-        coinDictionary[coinKey] = coin.coin;
+        Debug.Log("Posting coin invoked!");
+
+        // var coinKey = coinDictionary.FirstOrDefault(x => x.Value == coin.coin).Key;
+        // coin.coin.is_available = false;
+        coinDictionary[coin.ID] = coin.coin;
+        Debug.Log("Updating coin dictionay complete!");
         
-        Debug.Log("Posting coin" + coinKey + " to : " + databaseURL);
+        var databaseURL = AuthController.Instance.GetDBURL();
+        Debug.Log("Posting coin" + coin.ID + " to : " + databaseURL);
         AuthController.Instance.UpdateCoinDatabase(coinDictionary, () => { onDone?.Invoke(); }, (reason) => { onFailed?.Invoke(reason); });
         // RestClient.Put<NewCoin>($"{databaseURL}coin_tests/{coinKey}.json", coin.coin).Catch( onRejected => { onFailed?.Invoke(onRejected); }).Then( () => { onDone?.Invoke(); });
     }

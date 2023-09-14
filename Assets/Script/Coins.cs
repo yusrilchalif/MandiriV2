@@ -172,13 +172,16 @@ public class Coins : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         currentUser.coinAmount += coin.value;
         currentUser.currentLimit += coin.value;
 
+        coin.is_available = false;
+
         Debug.Log("Posting coin to db...");
         CoinAuth.Instance.PostCoin(this, () => {
             //Succes
             Debug.Log("Posting coin success!");
 
             //Post function
-            UserAuth.Instance.PostUser(currentUser, () => {
+            UserAuth.Instance.PostUser(currentUser,
+            () => {
                     //Post Succes
                     Debug.Log("Updating current user...");
                     UserAuth.Instance.SetCurrentUser(currentUser);
