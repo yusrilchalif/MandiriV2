@@ -104,7 +104,8 @@ public class CoinAuth : MonoBehaviour
         coinDictionary[coinKey] = coin.coin;
         
         Debug.Log("Posting coin" + coinKey + " to : " + databaseURL);
-        RestClient.Put<NewCoin>($"{databaseURL}coin_tests/{coinKey}.json", coin.coin).Catch( onRejected => { onFailed?.Invoke(onRejected); }).Then( () => { onDone?.Invoke(); });
+        AuthController.Instance.UpdateCoinDatabase(coinDictionary, () => { onDone?.Invoke(); }, (reason) => { onFailed?.Invoke(reason); });
+        // RestClient.Put<NewCoin>($"{databaseURL}coin_tests/{coinKey}.json", coin.coin).Catch( onRejected => { onFailed?.Invoke(onRejected); }).Then( () => { onDone?.Invoke(); });
     }
 
     public void GetCoinStatus(string coinID, UnityAction onAvailable, UnityAction onUnavailable) {

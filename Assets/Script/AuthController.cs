@@ -477,10 +477,13 @@ public class AuthController : MonoBehaviour
         });
     }
 
-    public void UpdateCoinDatabase(Coins coin) {
-        var coinJson = JsonUtility.ToJson(coin);
-        coinDBRef.Child(coin.name).SetRawJsonValueAsync(coinJson);
-        Debug.Log($"Coin with id {coin.name} are updated!");
+    public delegate void OnDonePostCoinCallback();
+    public delegate void OnFailedPostCoinCallback(Exception reason);
+
+    public void UpdateCoinDatabase(Dictionary<string, NewCoin> coinDB, OnDonePostCoinCallback onDone, OnFailedPostCoinCallback onFailed) {
+        RestClient.Put<Dictionary<string, NewCoin>>($"{databaseURL}coin_tests.json", coinDB).Then(response => {
+            onDone?.Invoke();
+        }).Catch( (reason) => { onFailed?.Invoke(reason); });
     }
 
     public Dictionary<string, NewCoin> GetCoinListFromDB(GetCoinDbCallback callback) {
